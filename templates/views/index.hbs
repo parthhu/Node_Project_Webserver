@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="icon" href="/img/wether.jpeg">
+    <link rel="stylesheet" href="/css/style.css">
+   
+</head>
+
+<body>
+    {{!-- <h1>{{title}}</h1> --}}
+    <div class="mainCls">
+        {{>header}}
+        <p>{{name}}</p>
+        <form>
+            <input placeholder="Enter Location">
+            <button >Get Location</button>
+        </form>
+        <p id="msg1"></p>
+        <p id="msg2"></p>
+    </div>
+
+    {{>footer}}
+     <script src="/js/app.js"></script>
+</body>
+
+</html>
