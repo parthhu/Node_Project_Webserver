@@ -6,6 +6,7 @@ const forecast = require('./utils/forecast');
 
 
 const app = express();
+const prot = process.env.PORT || 3000;
 
 const publicDirPath = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname, '../templates/views');
@@ -44,13 +45,13 @@ app.get('/help', (req, res) => {
 //     res.send('<h1>About us Page</h1>')
 // });
 app.get('/wether', (req, res) => {
-    let address= req.query.address;
-    if(!address){
+    let address = req.query.address;
+    if (!address) {
         res.send({
             error: 'Please Provide Address',
         })
-    }else{
-        geocode(address, (error, { latitude, longitude, place }={}) => {
+    } else {
+        geocode(address, (error, { latitude, longitude, place } = {}) => {
             console.log(error)
             if (error) {
                 return res.send({
@@ -65,17 +66,17 @@ app.get('/wether', (req, res) => {
                 }
                 res.send({
                     forcast: data,
-                    location:place,
-                    address:address,
-                    latitude:latitude,
-                    longitude:longitude
+                    location: place,
+                    address: address,
+                    latitude: latitude,
+                    longitude: longitude
                 })
             });
         });
     }
-    
 
-   
+
+
 });
 
 app.get('/product', (req, res) => {
@@ -101,6 +102,6 @@ app.get('*', (req, res) => {
         name: "lenovo"
     })
 })
-app.listen(3000, () => {
-    console.log("port 3000 is working")
+app.listen(prot, () => {
+    console.log("port " + prot + " is working")
 })
